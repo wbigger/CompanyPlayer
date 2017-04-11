@@ -28,9 +28,9 @@ public class Player {
 
     public boolean play(Track track) {
         if (isPlaying) {
-            System.out.println("Already playing "+playingTrack.title+". Please stop this first.");
+            System.out.println("Already playing "+playingTrack.getTitle()+". Please stop this first.");
         } else if (track != null){
-            System.out.println("Start playing track "+track.title);
+            System.out.println("Start playing track "+track.getTitle());
             playingTrack = track;
             isPlaying  = true;
         } else {
@@ -38,4 +38,11 @@ public class Player {
         }
         return isPlaying;
     }
+
+	@Override
+	public String toString() {
+		return "Player [isPlaying=" + isPlaying + ", playingTrack=" + playingTrack + "]";
+	}
+    
+    
 }

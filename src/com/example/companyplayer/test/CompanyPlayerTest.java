@@ -3,7 +3,6 @@ package com.example.companyplayer.test;
 import com.example.companyplayer.TracksRepository;
 import com.example.companyplayer.model.Player;
 import com.example.companyplayer.model.Track;
-
 /**
  * Created by claudio on 4/10/17.
  */
@@ -75,11 +74,19 @@ public class CompanyPlayerTest {
 		
 		System.out.println();
 	}
+	
+	void test4() {
+		System.out.println("Main: running test4");
+		Player player = new Player();
+    	player.play(TracksRepository.BohemianRhapsodyTrack);
+    	System.out.println(player);
+	}
+	
     public static void main(String[] args) {
 
     	CompanyPlayerTest companyPlayerTest = new CompanyPlayerTest();
     	companyPlayerTest.test1();
     	companyPlayerTest.test2();
-    	companyPlayerTest.test3();
+    	companyPlayerTest.test3();    	
     }
 }
