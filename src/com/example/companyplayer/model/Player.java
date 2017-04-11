@@ -5,13 +5,13 @@ package com.example.companyplayer.model;
  */
 public class Player {
     private boolean isPlaying = false;
-    private Track playingTrack;
+    private Playable playingMedia;
 
     public boolean togglePlay() {
         if (isPlaying) {
             stop();
         } else {
-            play(playingTrack);
+            play(playingMedia);
         }
         return isPlaying;
     }
@@ -20,28 +20,39 @@ public class Player {
         if (!isPlaying) {
             System.out.println("Nothing to stop.");
         } else {
+            playingMedia.stop();
             System.out.println("Song successfully stopped.");
             isPlaying  = false;
         }
         return isPlaying;
     }
 
-    public boolean play(Track track) {
+    public boolean play(Playable playable) {
         if (isPlaying) {
-            System.out.println("Already playing "+playingTrack.getTitle()+". Please stop this first.");
-        } else if (track != null){
-            System.out.println("Start playing track "+track.getTitle());
-            playingTrack = track;
+            System.out.println("Already playing "+playingMedia+". Please stop this first.");
+        } else if (playable != null){
+        	playingMedia = playable;
+        	playingMedia.play();
+            System.out.println("Start playing "+playingMedia);
             isPlaying  = true;
         } else {
-            System.out.println("Cannot play the track. Maybe input track is null.");
+            System.out.println("Cannot play this media. Maybe input media is null.");
         }
         return isPlaying;
     }
 
 	@Override
 	public String toString() {
-		return "Player [isPlaying=" + isPlaying + ", playingTrack=" + playingTrack + "]";
+		// The following is to test instanceof
+		if (this.playingMedia instanceof Track) {
+			((Track)playingMedia).getTitle();
+			Track track = (Track)playingMedia;
+			return "Player [isPlaying:" + isPlaying + ", playing track:" + track.getTitle() + "]";
+		} else if (this.playingMedia instanceof Playlist) {
+			return "Player [isPlaying:" + isPlaying + ", playing playlist:" + ((Playlist)playingMedia).getName() + "]";
+		} else {
+			return "Player [isPlaying:" + isPlaying + ", playing media:" + playingMedia + "]";
+		}
 	}
     
     

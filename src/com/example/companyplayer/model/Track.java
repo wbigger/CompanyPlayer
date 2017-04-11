@@ -3,7 +3,7 @@ package com.example.companyplayer.model;
 /**
  * Created by claudio on 4/10/17.
  */
-public class Track implements Comparable<Track>{
+public class Track implements Comparable<Track>, Playable {
     private String title;
     private String artist;
     private int lengthSeconds;
@@ -35,14 +35,16 @@ public class Track implements Comparable<Track>{
         return hour + "h "+min + "m "+sec + "s";
     }
     
-	@Override
-    public String toString() {
-    	String info = "title:"
-                + this.getTitle()
-                + "-artist:" + this.getArtist()
-                + "-length:" + this.getLengthHMS();
-        return info;
-    }
+//	@Override
+//    public String toString() {
+//    	String info = "title:"
+//                + this.getTitle()
+//                + "-artist:" + this.getArtist()
+//                + "-length:" + this.getLengthHMS();
+//        return info;
+//    }
+	
+	
 
 	@Override
 	/** 
@@ -64,6 +66,11 @@ public class Track implements Comparable<Track>{
 	
 	
 	
+
+	@Override
+	public String toString() {
+		return "Track [title=" + title + ", artist=" + artist + ", length=" + getLengthHMS() + "]";
+	}
 
 	@Override
 	public int hashCode() {
@@ -97,6 +104,19 @@ public class Track implements Comparable<Track>{
 		} else if (!title.equals(other.title))
 			return false;
 		return true;
+	}
+
+	@Override
+	public void play() {
+		// TODO Auto-generated method stub
+		// TRACK specific play
+		
+	}
+
+	@Override
+	public void stop() {
+		// TODO Auto-generated method stub
+//		TRACK specific stop
 	}
     
     

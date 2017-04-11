@@ -17,10 +17,7 @@ public class PlaylistTest {
 		
 		final Track[] tracks = {TracksRepository.BohemianRhapsodyTrack,TracksRepository.SomebodyToLoveTrack};
 		
-		Playlist playlist = new Playlist();
-        playlist.tracks = tracks;
-        playlist.length = 2;
-
+		Playlist playlist = new Playlist("My favourite playlist",tracks);
         System.out.println("MAIN: getInfoWithFor");
         System.out.println(playlist);
 
@@ -68,7 +65,7 @@ public class PlaylistTest {
 	}
 	
 	public void test5() {
-		System.out.println("Main: running test4");
+		System.out.println("Main: running test5");
 		final Track[] tracks = {
 				TracksRepository.SomebodyToLoveTrack,
 				TracksRepository.BarcelonaTrack,
